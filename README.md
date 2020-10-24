@@ -142,6 +142,8 @@ The TimeSeriesHandler should:
 
 2. Implement Cholesky decomposition from covariance matrix 
 
+- add formulas for easier comprehension of code
+
 ## Day 2 
 
 ## Day 3
