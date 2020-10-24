@@ -13,6 +13,22 @@ A "const function", denoted with the keyword const after a function declaration,
 
 Signed numbers use sign flag or can be distinguish between negative values and positive values. Unsigned numbers store only positive numbers.
 
+#### Covariance 
+
+Covariance between variables i and j over some time period T, can be calculated as:
+
+```
+for t < T: 
+{
+    cov += i_t * j_t
+}
+return cov / (T-1)
+```
+
+#### Using `enum` to perform different calculations 
+
+Returns can be defined in mutliple ways. Add return types in `ReturnType.h`, and implement these with a `case` block in `TSHandler.cpp`.
+
 ## Day 1
 
 Implement TimeSeriesHandler and ReturnType enumerator class.
