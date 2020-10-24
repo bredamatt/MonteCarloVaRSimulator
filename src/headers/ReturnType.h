@@ -8,7 +8,7 @@ Definitions for returns:
             Investment = £8,000
             Current value = £10,000
 
-        Absolute return Y2 to Y1 = (10,000-8,000) / 8,000 = 25%
+        Absolute return = (10,000-8,000) / 8,000 = 25%
 
 
     2. Relative = (Current - Previous)
