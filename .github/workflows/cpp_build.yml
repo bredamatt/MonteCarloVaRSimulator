@@ -13,12 +13,12 @@ jobs:
   makefile-build-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - name: Get Time
+    - name: Get current time
+      uses: 1466587594/get-current-time@v2
       id: get-time
-      uses: nanzm/get-time-action@v1.0
       with:
-        timeZone: 5
-        format: 'YYYY-MM-DD-HH-mm-ss'
+        format: YYYYMMDD-HH
+        utcOffset: "+00:00"
 
     - name: Checkout
       uses: actions/checkout@v2.0.0
