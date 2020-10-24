@@ -6,7 +6,7 @@ on:
             - ./Makefile
             - "src/main.cpp"
             - "src/*/*.cpp"
-            - ".github/*/.yml"
+            - ".github/*/*.yml"
 
 jobs:
   makefile-build-on-ubuntu:
