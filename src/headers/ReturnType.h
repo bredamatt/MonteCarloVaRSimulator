@@ -10,7 +10,6 @@ Definitions for returns:
 
         Absolute return = (10,000-8,000) / 8,000 = 25%
 
-
     2. Relative = (Current - Previous)
 
         Relative return example:
