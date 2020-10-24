@@ -100,6 +100,34 @@ $$ -->
 
 See `CholeskyDecomposition.cpp` and `CholeskyDecomposition.h` for the implementation.
 
+Some useful formulas to bear in mind wrt. entries in the lower triangular matrix are:
+
+- diagonal entries can be found with:
+
+<!-- $$
+\pmb{L}_{kk} = \sqrt{\pmb{K}_{kk} - \sum_{j=i}^{k-1}\pmb{L}_{kj}^{2}}
+$$ --> 
+
+<div align="center"><img src="svg/zjoBcQ4Zgk.svg"/></div>
+
+Essentially, this means take the square root of the (k,k) entry in the covariance matrix - the sum of entries to the left of the diagonal in the lower triangle matrix squared. 
+
+- non-diagonal entries can be found with:
+
+<!-- $$
+\pmb{L}_{k,i} = \frac{\pmb{K}_{k,i} - \sum_{j=1}^{i-1} \pmb{L}_{i,j} \pmb{L}_{k,j}}{\pmb{L}_{ii}}
+$$ --> 
+
+<div align="center"><img src="svg/QPGvljzM8t.svg"/></div>
+
+Essentially, this means take the entry of the covariance matrix and subtract the sum of any entries to the left in the lower triangle matrix (there are none) and divide the the top left entry in the lower triangle matrix. In other words, it simplifies to:
+
+<!-- $$
+\pmb{L}_{k,i} = \frac{\pmb{K}_{k,i}} {\pmb{L}_{1,1}}
+$$ --> 
+
+<div align="center"><img src="svg/xGeghDbhXC.svg"/></div>
+
 ## Day 1
 
 1. Implement TimeSeriesHandler and ReturnType enumerator class.
