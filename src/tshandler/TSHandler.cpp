@@ -88,7 +88,7 @@ double TSHandler::ComputeCovariance(vector<vector<double>> d, int i, int j)
     return covariance / (d.size() - 1);
 }
 
-vector<vector<double>> TSHandler::CreateCovarianceMatrix(unsigned long startingDaysBack) 
+void TSHandler::CreateCovarianceMatrix(unsigned long startingDaysBack) 
 {
     if (!transformedToReturns)
         TransformToReturns();
@@ -96,9 +96,62 @@ vector<vector<double>> TSHandler::CreateCovarianceMatrix(unsigned long startingD
     if (returns.size() < (daysBackUsed + startingDaysBack))
     {
         daysBackUsed = returns.size() - startingDaysBack;
-        cout << "Warning: short time series. Only using " << daysBackUsed << " number of days back. \n \n";
+        cout << "Warning: short time series. Only using " << daysBackUsed << " number of observations / days back. \n \n";
     }
 
     vector<vector<double>>::const_iterator first = returns.end() - startingDaysBack - daysBackUsed;
     vector<vector<double>>::const_iterator last = returns.end() - startingDaysBack;
+    vector<vector<double>> reSizedReturns(first, last);
+
+    // Get dimensions based on number of risk factors
+    int dimensions = reSizedReturns[0].size();
+    covMatrix.resize(dimensions);
+
+    for (int i = 0; i < dimensions; ++i) 
+    {
+        covMatrix[i].resize(dimensions);
+        for (int j = i; j < dimensions; ++j)
+        {
+            covMatrix[i][j] = ComputeCovariance(reSizedReturns, i, j) * 252; // scale by daysBackUsed
+        }
+    }
+
+    // fill left triangular matrix
+    for (int i = 1; i < dimensions; i++)
+    {
+        for (int j = 0; j < i; ++j)
+        {
+            covMatrix[i][j] = covMatrix[j][i];
+        }
+    }
+}
+
+vector<vector<double>> TSHandler::GetCovarianceMatrix() const
+{
+    return covMatrix;
+}
+
+vector<vector<double>> TSHandler::GetPartsOfCovarianceMatrix(vector<unsigned long> diagonalIndices) const
+{
+    vector<vector<double>> smallerCovMatrix;
+    
+    // Define size based on input to member function
+    smallerCovMatrix.resize(diagonalIndices.size());
+
+    unsigned long smallCovMatrixIndex = 0;
+    for (unsigned long i = 0; i < covMatrix.size(); i++)
+    {
+        if (find(diagonalIndices.begin(), diagonalIndices.end(), i) != diagonalIndices.end())
+        {
+            for (unsigned long j = 0; j < covMatrix.size(); ++j)
+            {
+                if (find(diagonalIndices.begin(), diagonalIndices.end(), j) != diagonalIndices.end())
+                {
+                    smallerCovMatrix[smallCovMatrixIndex].push_back(covMatrix[i][j]);
+                }
+            }
+            smallCovMatrixIndex += 1;
+        }
+    }
+    return smallerCovMatrix;
 }

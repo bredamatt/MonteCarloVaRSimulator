@@ -15,7 +15,7 @@ class TSHandler
         vector<vector<double>> GetReturns() const;
         void TransformToReturns();
         double ComputeCovariance(vector<vector<double>> d, int i, int j);
-        vector<vector<double>> CreateCovarianceMatrix(unsigned long startingDaysBack = 0);
+        void CreateCovarianceMatrix(unsigned long startingDaysBack = 0);
         vector<vector<double>> GetCovarianceMatrix() const;
         vector<vector<double>> GetPartsOfCovarianceMatrix(vector<unsigned long> diagonalIndices) const;
     
