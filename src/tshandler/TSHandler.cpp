@@ -87,3 +87,18 @@ double TSHandler::ComputeCovariance(vector<vector<double>> d, int i, int j)
     // Divide sum by N-1
     return covariance / (d.size() - 1);
 }
+
+vector<vector<double>> TSHandler::CreateCovarianceMatrix(unsigned long startingDaysBack) 
+{
+    if (!transformedToReturns)
+        TransformToReturns();
+    
+    if (returns.size() < (daysBackUsed + startingDaysBack))
+    {
+        daysBackUsed = returns.size() - startingDaysBack;
+        cout << "Warning: short time series. Only using " << daysBackUsed << " number of days back. \n \n";
+    }
+
+    vector<vector<double>>::const_iterator first = returns.end() - startingDaysBack - daysBackUsed;
+    vector<vector<double>>::const_iterator last = returns.end() - startingDaysBack;
+}
