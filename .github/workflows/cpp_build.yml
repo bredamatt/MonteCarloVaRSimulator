@@ -1,4 +1,4 @@
-name: C++ builder with Makefile
+name: C++ builder/compiler with Makefile
 
 on: 
     push:
