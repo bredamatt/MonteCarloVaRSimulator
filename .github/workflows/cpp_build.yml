@@ -1,0 +1,22 @@
+name: C/C++ CI 
+
+on: [push]
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.0.0
+      
+    - name: Run make
+      run: make
+
+    - name: Run make dist-clean
+      run: make dist-clean
+    
+    - name: Upload binary file as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Cpp_Binary
+        path: bin/
