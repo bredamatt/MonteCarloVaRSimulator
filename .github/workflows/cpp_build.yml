@@ -25,9 +25,6 @@ jobs:
       
     - name: Run make
       run: make
-
-    - name: Run make dist-clean
-      run: make dist-clean
     
     - name: Upload binary file as artifact
       uses: actions/upload-artifact@v2
@@ -39,4 +36,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: depend-${{ steps.get-time.outputs.time }}
-        path: .dependencies
+        path: ./.dependencies
+
+    - name: Run make dist-clean to delete .dependencies and .o files
+      run: make dist-clean
