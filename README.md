@@ -110,7 +110,7 @@ $$ -->
 
 <div align="center"><img src="svg/MCtDnbma2k.svg"/></div>
 
-Essentially, this means take the square root of the (k,k) entry in the covariance matrix and subtract the square of the sum of entries to the left of the diagonal in the lower triangle matrix. 
+Intuitively, this means take the square root of the (j,j) entry in the covariance matrix and subtract the square of the sum of entries to the left of the diagonal in the lower triangle matrix. 
 
 ### Non-diagonal entries
 
@@ -121,7 +121,7 @@ $$ -->
 <div align="center"><img src="svg/F47HhzBo2o.svg"/></div>
 
 
-Essentially, this means take the entry of the covariance matrix and subtract the sum of any entries to the left in the lower triangle matrix (there are none, as we are moving downwards from top left corner to bottom left corner) and divide the the top left entry in the lower triangle matrix. In other words, it simplifies to:
+Intuitively, this means take the entry of the covariance matrix and subtract the sum of any entries to the left in the lower triangle matrix (there are none, as we are moving downwards from top left corner to bottom left corner) and divide the the top left entry in the lower triangle matrix. In other words, it simplifies to:
 
 <!-- $$
 \pmb{L}_{i,j} = \frac{\pmb{K}_{i,j}} {\pmb{L}_{1,1}}
