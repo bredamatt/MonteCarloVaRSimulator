@@ -13,6 +13,13 @@ jobs:
   makefile-build-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
+    - name: Get Time
+      id: get-time
+      uses: nanzm/get-time-action@v1.0
+      with:
+        timeZone: 8
+        format: 'YYYY-MM-DD-HH-mm-ss'
+
     - name: Checkout
       uses: actions/checkout@v2.0.0
       
@@ -25,5 +32,11 @@ jobs:
     - name: Upload binary file as artifact
       uses: actions/upload-artifact@v2
       with:
-        name: Cpp_Binary
+        name: MCEngine-${{ steps.get-time.outputs.time }}
         path: bin/
+
+    - name: Upload makefile depend
+      uses: actions/upload-artifact@v2
+      with:
+        name: build_depend
+        path: .dependencies-${{ steps.get-time.outputs.time }}
