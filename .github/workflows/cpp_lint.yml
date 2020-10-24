@@ -3,7 +3,8 @@ name: C++ linter with Uncrustify
 on:
     push:
         paths:
-            - "*.cpp"
+            - "src/main.cpp"
+            - "src/*/*.cpp"
 
 jobs:
   cpp_style_check:
