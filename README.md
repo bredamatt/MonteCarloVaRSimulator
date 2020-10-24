@@ -66,10 +66,39 @@ $$ -->
 are random variables, each with finite variance and expected value / mean, the covariance matrix of this random vector is the matrix whose (i, j) entry is the covariance between random variables Xi and Xj, defined as follows:
 
 <!-- $$
-\pmb{K_{\pmb{X_{i}X_{j}}}} = cov[X_{i}, X_{j}] = E[(X_i) - E[X_{i}])(X_{j} - E[X_{j}])]
+\pmb{K}_{X_{i}X_{j}} = cov[X_{i}, X_{j}] = E[(X_i) - E[X_{i}])(X_{j} - E[X_{j}])]
 $$ --> 
 
-<div align="center"><img src="svg/Wj99zPWW8l.svg"/></div>
+<div align="center"><img src="svg/H4dhxGePZv.svg"/></div>
+
+
+### Cholesky Decomposition
+
+To simulate correlated variables from a given set of non-correlated variables with the condition that the simulated variables should be correlated according to a given covariance matrix created from historical observations, we use Cholesky decomposition. 
+
+In other words, given a covariance matrix created from historical observations, we can simulate correlated variables with a set of non-correlated variables.
+
+More generally, we are looking to decompose the covariance matrix using a lower triangle matrix L, such that the covariance matrix may be defined as:
+
+<!-- $$
+\pmb{K}_{\pmb{XX}} = \pmb{L} * \pmb{L}^{T}
+$$ --> 
+
+<div align="center"><img src="svg/QENDBL5Yh6.svg"/></div>
+
+The formula to compute the lower triangle matrix based on the entries in the covariance matrix is defined as: 
+
+<!-- $$ 
+\pmb{L} = \begin{pmatrix} 
+\sqrt{\pmb{K}_{11}} & 0 & 0 \\
+\pmb{K}_{21} / \pmb{L}_{11} & \sqrt{\pmb{K}_{22} - \pmb{L}^{2}_{21}} & 0 \\
+\pmb{K}_{31} / \pmb{L}_{11} & (\pmb{K}_{32} - \pmb{L}_{31}\pmb{L}_{21}) / \pmb{L}_{22} & \sqrt{\pmb{K}_{33} - \pmb{L}_{31}^{2} - \pmb{L}_{32}^{2}}
+\end{pmatrix}
+$$ --> 
+
+<div align="center"><img src="svg/nGEGfEWddX.svg"/></div>
+
+See `CholeskyDecomposition.cpp` and `CholeskyDecomposition.h` for the implementation.
 
 ## Day 1
 
