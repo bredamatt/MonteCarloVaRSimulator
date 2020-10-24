@@ -17,7 +17,7 @@ jobs:
       uses: 1466587594/get-current-time@v2
       id: get-time
       with:
-        format: YYYYMMDD-HH
+        format: YYYY-MM-DD-HH-MM-SS
         utcOffset: "+00:00"
 
     - name: Checkout
