@@ -5,6 +5,7 @@ on:
         paths:
             - ./Makefile
             - *.cpp
+            - *.yml
 
 jobs:
   makefile-build-on-ubuntu:
