@@ -5,6 +5,7 @@ on:
         paths:
             - "src/main.cpp"
             - "src/*/*.cpp"
+            - "src/*/*.h"
 
 jobs:
   cpp_style_check:

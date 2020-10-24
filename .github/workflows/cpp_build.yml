@@ -6,6 +6,7 @@ on:
             - ./Makefile
             - "src/main.cpp"
             - "src/*/*.cpp"
+            - "src/*/*.h"
             - ".github/*/*.yml"
 
 jobs:
