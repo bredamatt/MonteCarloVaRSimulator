@@ -63,7 +63,7 @@ $$ -->
 
 <div align="center"><img src="svg/Bl1s3DT9Am.svg"/></div>
 
-are random variables, each with finite variance and expected value / mean, the covariance matrix of this random vector is the matrix whose (i, j) entry is the covariance defined as follows:
+are random variables, each with finite variance and expected value / mean, the covariance matrix of this random vector is the matrix whose (i, j) entry is the covariance between random variables Xi and Xj, defined as follows:
 
 <!-- $$
 \pmb{K_{\pmb{X_{i}X_{j}}}} = cov[X_{i}, X_{j}] = E[(X_i) - E[X_{i}])(X_{j} - E[X_{j}])]
