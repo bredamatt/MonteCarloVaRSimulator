@@ -1,6 +1,9 @@
 name: C++ linter with Uncrustify
 
-on: [ push ]
+on:
+    push:
+        paths:
+            - *.cpp
 
 jobs:
   cpp_style_check:
