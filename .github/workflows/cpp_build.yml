@@ -1,9 +1,9 @@
-name: C/C++ CI 
+name: C++ builder with Makefile
 
 on: [push]
 
 jobs:
-  ubuntu-build:
+  makefile-build-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
