@@ -2,7 +2,7 @@ NAME := MCVarEngine
 CXX := g++
 CXXFLAGS := -std=c++11
 
-srcfiles := $(shell find src -maxdepth 1 -name "*.cpp")
+srcfiles := $(shell find ./src -maxdepth 1 -name "*.cpp")
 objects := $(patsubst %.cpp, %.o, $(srcfiles))
 
 all: $(NAME) 
