@@ -12,7 +12,7 @@ class TSHandler
                   unsigned long daysBackUsed_ = 252);
         
         vector<double> GetMostRecentValues(unsigned long startDaysBack = 0) const;
-        vector<double> GetReturns() const;
+        vector<vector<double>> GetReturns() const;
         void TransformToReturns();
         double ComputeCovariance(vector<vector<double>> d, int i, int j);
         void CreateCovarianceMatrix(unsigned long startingDaysBack = 0);
