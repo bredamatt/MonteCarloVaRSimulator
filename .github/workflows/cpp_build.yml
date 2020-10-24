@@ -17,7 +17,7 @@ jobs:
       id: get-time
       uses: nanzm/get-time-action@v1.0
       with:
-        timeZone: 8
+        timeZone: 1
         format: 'YYYY-MM-DD-HH-mm-ss'
 
     - name: Checkout
