@@ -1,6 +1,10 @@
 name: C++ builder with Makefile
 
-on: [push]
+on: 
+    push:
+        paths:
+            - ./Makefile
+            - *.cpp
 
 jobs:
   makefile-build-on-ubuntu:
