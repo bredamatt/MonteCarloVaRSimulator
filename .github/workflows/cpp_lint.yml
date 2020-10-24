@@ -1,11 +1,11 @@
 name: C++ linter with Uncrustify
 
 on:
-    push:
-        paths:
-            - "src/main.cpp"
-            - "src/*/*.cpp"
-            - "src/*/*.h"
+  push:
+    paths:
+      - "src/main.cpp"
+      - "src/*/*.cpp"
+      - "src/*/*.h"
 
 jobs:
   cpp_style_check:
