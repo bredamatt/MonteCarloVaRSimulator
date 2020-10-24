@@ -100,33 +100,34 @@ $$ -->
 
 See `CholeskyDecomposition.cpp` and `CholeskyDecomposition.h` for the implementation.
 
-Some useful formulas to bear in mind wrt. entries in the lower triangular matrix are:
+Some useful formulas to bear in mind wrt. entries in the lower triangular matrix are defined below.
 
-- diagonal entries can be found with:
-
-<!-- $$
-\pmb{L}_{kk} = \sqrt{\pmb{K}_{kk} - \sum_{j=i}^{k-1}\pmb{L}_{kj}^{2}}
-$$ --> 
-
-<div align="center"><img src="svg/zjoBcQ4Zgk.svg"/></div>
-
-Essentially, this means take the square root of the (k,k) entry in the covariance matrix - the sum of entries to the left of the diagonal in the lower triangle matrix squared. 
-
-- non-diagonal entries can be found with:
+### Diagonal entries
 
 <!-- $$
-\pmb{L}_{k,i} = \frac{\pmb{K}_{k,i} - \sum_{j=1}^{i-1} \pmb{L}_{i,j} \pmb{L}_{k,j}}{\pmb{L}_{ii}}
+\pmb{L}_{jj} = \sqrt{\pmb{K}_{jj} - \sum_{j=i}^{k-1}\pmb{L}_{jk}^{2}}
 $$ --> 
 
-<div align="center"><img src="svg/QPGvljzM8t.svg"/></div>
+<div align="center"><img src="svg/MCtDnbma2k.svg"/></div>
 
-Essentially, this means take the entry of the covariance matrix and subtract the sum of any entries to the left in the lower triangle matrix (there are none) and divide the the top left entry in the lower triangle matrix. In other words, it simplifies to:
+Essentially, this means take the square root of the (k,k) entry in the covariance matrix and subtract the square of the sum of entries to the left of the diagonal in the lower triangle matrix. 
+
+### Non-diagonal entries
 
 <!-- $$
-\pmb{L}_{k,i} = \frac{\pmb{K}_{k,i}} {\pmb{L}_{1,1}}
+\pmb{L}_{i,j} = \frac{\pmb{K}_{i,j} - \sum_{k=1}^{j-1} \pmb{L}_{j,k} \pmb{L}_{i,k}}{\pmb{L}_{jj}}
 $$ --> 
 
-<div align="center"><img src="svg/xGeghDbhXC.svg"/></div>
+<div align="center"><img src="svg/F47HhzBo2o.svg"/></div>
+
+
+Essentially, this means take the entry of the covariance matrix and subtract the sum of any entries to the left in the lower triangle matrix (there are none, as we are moving downwards from top left corner to bottom left corner) and divide the the top left entry in the lower triangle matrix. In other words, it simplifies to:
+
+<!-- $$
+\pmb{L}_{i,j} = \frac{\pmb{K}_{i,j}} {\pmb{L}_{1,1}}
+$$ --> 
+
+<div align="center"><img src="svg/36Tv7OCNAX.svg"/></div>
 
 ## Day 1
 
