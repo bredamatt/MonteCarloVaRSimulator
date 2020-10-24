@@ -1,13 +1,13 @@
 name: C++ builder/compiler with Makefile
 
 on: 
-    push:
-        paths:
-            - ./Makefile
-            - "src/main.cpp"
-            - "src/*/*.cpp"
-            - "src/*/*.h"
-            - ".github/*/*.yml"
+  push:
+    paths:
+      - ./Makefile
+      - "src/main.cpp"
+      - "src/*/*.cpp"
+      - "src/*/*.h"
+      - ".github/*/*.yml"
 
 jobs:
   makefile-build-on-ubuntu:
