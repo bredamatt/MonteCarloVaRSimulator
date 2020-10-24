@@ -1,6 +1,6 @@
 #include <iostream>
 #include "tshandler/TSHandler.cpp"
-#include "cholesky/CholeDecomposition.cpp"
+#include "cholesky/CholeskyDecomposition.cpp"
 
 using namespace std;
 
