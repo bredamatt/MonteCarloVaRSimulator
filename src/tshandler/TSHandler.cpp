@@ -69,19 +69,21 @@ double TSHandler::ComputeCovariance(vector<vector<double>> d, int i, int j)
 {
     /*
     Definition of Covariance:
-        Covariance is simply calculate as the product of factors i and j
-        divided by N, where N is number of observations
+        Covariance is simply calculate as:
+        the product of risk factors i and j divided by N-1,
+        where N is number of observations (size of outer vector)
 
         Args:
-            - d is a time indexed vector of vectors of risk factors
-            - i is the first risk factor
-            - j is the second risk factor
+            - d is the outer vector (vector<vector<T>>)
+            - i is the first risk factor value
+            - j is the second risk factor value
     */
     double covariance = 0;
-    for (unsigned long k = 0; k < d.size(); ++k)
+    for (unsigned long t = 0; t < d.size(); ++t)
     {
-        covariance += d[k][i] * d[k][j];
+        // For each time period t, add product i*j to sum 
+        covariance += d[t][i] * d[t][j];
     }
-
+    // Divide sum by N-1
     return covariance / (d.size() - 1);
 }
