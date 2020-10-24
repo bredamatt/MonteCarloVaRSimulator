@@ -1,2 +1,2 @@
 #pragma once
-enum class AbsOrRel { abs, rel};
+enum class AbsOrRel { abs, rel };
