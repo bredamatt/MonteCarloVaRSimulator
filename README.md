@@ -31,7 +31,7 @@ Returns can be defined in mutliple ways. Add return types in `ReturnType.h`, and
 
 ## Day 1
 
-Implement TimeSeriesHandler and ReturnType enumerator class.
+1. Implement TimeSeriesHandler and ReturnType enumerator class.
 
 The TimeSeriesHandler should:
 
@@ -39,6 +39,8 @@ The TimeSeriesHandler should:
 - generate spot rates 
 - transform to returns,
 - compute covariance for two risk-factors
+
+2. Implement Cholesky decomposition from covariance matrix 
 
 ## Day 2 
 
