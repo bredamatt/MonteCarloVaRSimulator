@@ -4,8 +4,8 @@ on:
     push:
         paths:
             - ./Makefile
-            - *.cpp
-            - *.yml
+            - "*.cpp"
+            - "*.yml"
 
 jobs:
   makefile-build-on-ubuntu:
