@@ -38,5 +38,5 @@ jobs:
     - name: Upload makefile depend
       uses: actions/upload-artifact@v2
       with:
-        name: build_depend
-        path: .dependencies-${{ steps.get-time.outputs.time }}
+        name: depend-${{ steps.get-time.outputs.time }}
+        path: .dependencies
