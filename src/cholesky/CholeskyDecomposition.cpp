@@ -22,7 +22,7 @@ vector<vector<double>> CholeskyDecomposition(vector<vector<double>> matrix)
 
             if (j == i) //for diagonal elements L(j, j)
             {
-                // Move left of inner elements
+                // Move left of diagonal elements in lower triangle matrix and add values to sum
                 for (int k = 0; k < j; k++)
                 {
                     sum += pow(lower[j][k], 2);
@@ -32,7 +32,7 @@ vector<vector<double>> CholeskyDecomposition(vector<vector<double>> matrix)
             }
             else // in scenarios L(i, j),  
             {
-                // iterate left of the non-diagonal element (there are none)
+                // iterate left of the non-diagonal element (there should be none)
                 for (int k = 0; k < j; k++)
                 {
                     sum += (lower[i][k] * lower[j][k]);;
