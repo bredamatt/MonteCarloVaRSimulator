@@ -1,28 +1,31 @@
 #include <iostream>
+#include <cmath>
+#include <chrono>
+#include <memory>
+#include <algorithm>
+#include <iomanip>
 #include "tshandler/TSHandler.cpp"
 #include "cholesky/CholeskyDecomposition.cpp"
-#include "parsers/ReadCSV.cpp"
+#include "parsers/ReadCSV.h"
 #include "returns/ReturnType.h"
 
 using namespace std;
 
 int main() {
     string file = "data/RiskFactorsHistory.csv";
+
+    // Parse the file and create time series
     vector<vector<double>> riskFactors = parse2DCsvFile(file);
-    cout << "Size of risk factors matrix: " << riskFactors.size() << endl;
+    
+    // Specify the type of returns
+    vector<AbsOrRel> ReturnTypes{ AbsOrRel::rel, AbsOrRel::rel,AbsOrRel::abs, AbsOrRel::rel };
 
-    vector<AbsOrRel> absOrRelVec(riskFactors.size());
-    TSHandler tsHandler(riskFactors, absOrRelVec);
+    unsigned long riskFactorDaysUsed = 250;
 
-    /**
-     * Need to look into enum case handling 
-     * Methods work, just need to check matrix.cpp to validate
-     * */
+    TSHandler tsHandler(riskFactors, ReturnTypes, riskFactorDaysUsed);
+    tsHandler.CreateCovarianceMatrix(0);
 
-    // tsHandler.TransformToReturns();
     // vector<vector<double>> covMatrix = tsHandler.GetCovarianceMatrix();
     // vector<vector<double>> lowerMatrix = CholeskyDecomposition(covMatrix);
 
-
-    return 0;
 }
