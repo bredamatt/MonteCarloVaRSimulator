@@ -1,4 +1,4 @@
-#include "../headers/TSHandler.h"
+#include "TSHandler.h"
 #include <iostream>
 #include <cmath>
 #include <assert.h>
@@ -17,8 +17,8 @@ TSHandler::TSHandler(vector<vector<double>> riskFactorTimeSeries_,
 vector<double> TSHandler::GetMostRecentValues(unsigned long startingDaysBack) const
 {
     // define vector of size based on inner vector in riskFactorTimeSeries (this is number of elements per row, if you like)
-    vector<double> mostReventValues(riskFactorTimeSeries.back().size());
-    for (unsigned long j = 0; j < mostReventValues.size(); j++ )
+    vector<double> mostReventValues(riskFactorTimeSeries[0].size());
+    for (unsigned long j = 0; j < mostReventValues.size(); j++)
     {
         // look startingDaysBack into riskFactorTimeSeries, subtract from time series vector final index accordingly
         mostReventValues[j] = riskFactorTimeSeries[riskFactorTimeSeries.size() - 1 - startingDaysBack][j];
@@ -57,7 +57,6 @@ void TSHandler::TransformToReturns()
                     returns[i][j] = log(riskFactorTimeSeries[i + 1][j] / riskFactorTimeSeries[i][j]);
                 }
                 break;
-            
             default:
                 break;
         }
