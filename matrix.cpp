@@ -1,5 +1,8 @@
 #include <vector>
+#include <iostream>
 #include "src/cholesky/CholeskyDecomposition.cpp"
+
+using namespace std;
 
 #define MAXROWS 10
 #define MAXCOLS 10
@@ -69,7 +72,6 @@ int main()
             covMatrix[i][j] = covMatrix[j][i];
         }
     }
-
     cout << "Printing CovMatrix" << endl;
     for (int i = 0; i < covMatrix.size(); i++) {
         for (int j = 0; j < covMatrix.back().size(); j++) {
@@ -79,7 +81,7 @@ int main()
     }
 
     // Testing  Cholesky
-    cout << "Testing CholeskyDecomposition" << endl;
+    cout << "Testing Cholesky Decomposition" << endl;
     vector<vector<double>> lower = CholeskyDecomposition(covMatrix);
     cout << "Printing lower triangle matrix" << endl;
     for (int i = 0; i < lower.size(); i++) {
