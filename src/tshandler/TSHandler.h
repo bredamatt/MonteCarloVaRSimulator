@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../headers/ReturnType.h"
+#include "../returns/ReturnType.h"
 
 using namespace std;
 
