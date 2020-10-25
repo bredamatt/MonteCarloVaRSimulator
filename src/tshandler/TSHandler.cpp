@@ -34,33 +34,28 @@ vector<vector<double>> TSHandler::GetReturns() const
 void TSHandler::TransformToReturns()
 {
     transformedToReturns = true;
-    returns = riskFactorTimeSeries;
-
-    // Need to subtract one element for this returns vector<vector<double>>
-    returns.resize(riskFactorTimeSeries.size() -1);
-
-    // Loop over inner vector elements (size defined by number of risk factors)
-    for (unsigned long j = 0; j < riskFactorTimeSeries[1].size(); j++)
-    {
-        switch (absOrRelReturnsVector[j])
-        {
-            case AbsOrRel::abs:
-                for (unsigned long i = 0; i < riskFactorTimeSeries.size() - 1; i++)
-                {
-                    returns[i][j] = riskFactorTimeSeries[i + 1][j] - riskFactorTimeSeries[i][j];
-                }
-                break;
-
-            case AbsOrRel::rel:
-                for (unsigned long i = 0; i < riskFactorTimeSeries.size() - 1; i++)
-                {
-                    returns[i][j] = log(riskFactorTimeSeries[i + 1][j] / riskFactorTimeSeries[i][j]);
-                }
-                break;
-            default:
-                break;
-        }
-    }
+	returns = riskFactorTimeSeries;
+	returns.resize(riskFactorTimeSeries.size() - 1);
+	for (unsigned long j = 0; j < riskFactorTimeSeries[1].size(); j++)
+	{
+		switch (absOrRelReturnsVector[j])
+		{
+		case AbsOrRel::abs:
+			for (unsigned long i = 0; i < riskFactorTimeSeries.size() - 1; i++)
+			{
+				returns[i][j] = riskFactorTimeSeries[i + 1][j] - riskFactorTimeSeries[i][j];
+			}
+			break;
+		case AbsOrRel::rel:
+			for (unsigned long i = 0; i < riskFactorTimeSeries.size() - 1; i++)
+			{
+				returns[i][j] = log(riskFactorTimeSeries[i + 1][j] / riskFactorTimeSeries[i][j]);
+			}
+			break;
+		default:
+			break;
+		}
+	}
     return;
 }
 
@@ -109,6 +104,8 @@ void TSHandler::CreateCovarianceMatrix(unsigned long startingDaysBack)
     for (int i = 0; i < dimensions; ++i) 
     {
         covMatrix[i].resize(dimensions);
+        
+        // for diagonals
         for (int j = i; j < dimensions; ++j)
         {
             covMatrix[i][j] = ComputeCovariance(reSizedReturns, i, j) * 252; // scale by daysBackUsed
