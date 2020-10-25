@@ -22,5 +22,6 @@ clean:
 
 dist-clean: clean
 	rm -rf *~ .dependencies
+	rm -rf bin/MCVarEngine-*
 
 include .dependencies
