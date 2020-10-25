@@ -15,9 +15,9 @@ int main() {
 
     TSHandler tsHandler(riskFactors, absOrRelVec);
 
-    vector<double> rets = tsHandler.GetMostRecentValues();
+    // vector<double> rets = tsHandler.GetMostRecentValues();
+    tsHandler.TransformToReturns();
 
-    // tsHandler.CreateCovarianceMatrix(0);
     // vector<vector<double>> covMatrix = tsHandler.GetCovarianceMatrix();
     // vector<vector<double>> lowerMatrix = CholeskyDecomposition(covMatrix);
 
