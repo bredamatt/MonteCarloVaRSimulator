@@ -12,10 +12,10 @@ vector<vector<double>> CholeskyDecomposition(vector<vector<double>> matrix)
     // Create lower triangle matrix (square) 
     vector<vector<double>> lower(n, inner);
     
-    // For i less than size of matrix, iterate over outer elements i
+    // For i less than size of matrix
     for (int i = 0; i < n; i++)
     {
-        // For j less than, or equal to i, iterate over inner elements j
+        // For j less than, or equal to i
         for (int j = 0; j <= i; j++)
         {
             double sum = 0;
